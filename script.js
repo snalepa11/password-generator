@@ -17,37 +17,54 @@ function isEmptyOrSpaces(str){
   return str === null || str.match(/^ *$/) !== null;
 }
 
+function containsSpecialChars(str) {
+  const specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+  return specialChars.test(str);
+}
+
+
+var extrasObj= {
+
+}
+
 function generatePassword(){
   console.log("get password")
   // ask for passwordLength
   var passwordLength = prompt("Enter the desired length of your password")
-  console.log(passwordLength)
 
   if(passwordLength < 8 || passwordLength > 128){
-    prompt("Password must be less greater that 8 or less than 128 characters.")
+    passwordLength = prompt("Password must be less greater that 8 or less than 128 characters.")
   }
 
   var passwordCharacters = prompt("Enter any special characters you wish to use. (Ex: !, @, $)")
-  console.log(passwordCharacters)
 
   if(isEmptyOrSpaces(passwordCharacters)){
-    prompt("You must enter at least one special character.")
-  }
+    passwordCharacters=prompt("You must enter at least one special character.")
+  } 
+
+  if(!containsSpecialChars(passwordCharacters)){
+    passwordCharacters=prompt("You must enter at least one special character.")
+  } 
 
   var extras = confirm("Do you want to use upper case, lower case, numbers, and special characters?")
   console.log(extras)
-  // validate that its within our requirements
-  //conditional Statement in our code
-  //if it is not valid 
-
-  // if(its less an 8 or grater than 128){
-  //   return "Invalid password length"
-  // }
-
-
+ 
   var finalPassword = ""
-  var characters = "@#423SDFwer"
-  finalPassword = finalPassword.concat(characters)
+  for(let i=0; i < passwordLength; i++) {
+
+    
+    finalPassword = finalPassword + "\u0046"
+    // What we want is to append a character in each itteration to the finalpassword string 
+  }
+
+  // var characters = "@#423SDFwer"
+  // finalPassword = finalPassword.concat(characters)
   return finalPassword
 }
+
+
+"!):"
+
+
+
 
